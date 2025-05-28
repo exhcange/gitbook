@@ -2,42 +2,47 @@
 
 ## Public
 
-### Security: [None](broken-reference)
+Security: [None](broken-reference)
 
-{% swagger method="get" path="/sapi/v1/ping" baseUrl="https://openapi.xxx.com" summary=" Test Connectivity" %}
-{% swagger-description %}
- This endpoint checks connectivity to the host
-{% endswagger-description %}
+### &#x20;Test Connectivity
 
-{% swagger-response status="200: OK" description=" Connection normal" %}
+<mark style="color:blue;">`GET`</mark> `https://openapi.xxx.xx/sapi/v2/ping`
+
+&#x20;This endpoint checks connectivity to the host
+
+{% tabs %}
+{% tab title="200: OK  Connection normal" %}
 ```javascript
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="get" path="/sapi/v1/time" baseUrl="https://openapi.xxx.com" summary=" Check Server Time" %}
-{% swagger-description %}
- This endpoint checks connectivity to the server and retrieves server timestamp
-{% endswagger-description %}
+### &#x20;Check Server Time
 
-{% swagger-response status="200: OK" description=" Successfully retrieved server time" %}
+<mark style="color:blue;">`GET`</mark> `https://openapi.xxx.xx/sapi/v2/time`
+
+&#x20;This endpoint checks connectivity to the server and retrieves server timestamp
+
+{% tabs %}
+{% tab title="200: OK  Successfully retrieved server time" %}
 ```javascript
 {
     "timezone": "GMT+08:00",
     "serverTime": 1595563624731
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
-{% swagger method="get" path="/sapi/v1/symbols" baseUrl="https://openapi.xxx.com" summary="Pairs List " %}
-{% swagger-description %}
+### Pairs List&#x20;
 
-{% endswagger-description %}
+<mark style="color:blue;">`GET`</mark> `https://openapi.xxx.xx/sapi/v2/symbols`
 
-{% swagger-response status="200: OK" description="" %}
-```javascript
+{% tabs %}
+{% tab title="200: OK " %}
+````javascript
+```json
 {
     "symbols": [
         {
@@ -45,71 +50,106 @@
             "symbol": "sccadai",
             "pricePrecision": 6,
             "baseAsset": "SCCA",
-            "quoteAsset": "DAI"
+            "quoteAsset": "DAI",
+            "limitAmountMin": "100",
+            "limitPriceMin": "123.45",
+            "limitVolumeMin": "10",
+            "feeRateMaker": "0.002",
+            "feeRateTaker": "0.002"
         },
         {
             "quantityPrecision": 8,
             "symbol": "btcusdt",
             "pricePrecision": 2,
             "baseAsset": "BTC",
-            "quoteAsset": "USDT"
+            "quoteAsset": "USDT",
+            "limitAmountMin": "100",
+            "limitPriceMin": "123.45",
+            "limitVolumeMin": "10",
+            "feeRateMaker": "0.002",
+            "feeRateTaker": "0.002"
         },
         {
             "quantityPrecision": 3,
             "symbol": "bchusdt",
             "pricePrecision": 2,
             "baseAsset": "BCH",
-            "quoteAsset": "USDT"
+            "quoteAsset": "USDT",
+            "limitAmountMin": "100",
+            "limitPriceMin": "123.45",
+            "limitVolumeMin": "10",
+            "feeRateMaker": "0.002",
+            "feeRateTaker": "0.002"
         },
         {
             "quantityPrecision": 2,
             "symbol": "etcusdt",
             "pricePrecision": 2,
             "baseAsset": "ETC",
-            "quoteAsset": "USDT"
+            "quoteAsset": "USDT",
+            "limitAmountMin": "100",
+            "limitPriceMin": "123.45",
+            "limitVolumeMin": "10",
+            "feeRateMaker": "0.002",
+            "feeRateTaker": "0.002"
         },
         {
             "quantityPrecision": 2,
             "symbol": "ltcbtc",
             "pricePrecision": 6,
             "baseAsset": "LTC",
-            "quoteAsset": "BTC"
+            "quoteAsset": "BTC",
+            "limitAmountMin": "100",
+            "limitPriceMin": "123.45",
+            "limitVolumeMin": "10",
+            "feeRateMaker": "0.002",
+            "feeRateTaker": "0.002"
         }
     ]
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+````
+{% endtab %}
+{% endtabs %}
 
 **weight(IP/UID): 1**
 
 #### Response: <a href="#bi-dui-lie-biao" id="bi-dui-lie-biao"></a>
 
-| symbol            | string  | `BTCUSDT` | Name of the symbol              |   | Currency to name  |
-| ----------------- | ------- | --------- | ------------------------------- | - | ----------------- |
-| baseAsset         | string  | `BTC`     | Underlying asset for the symbol |   | base currency     |
-| quoteAsset        | string  | `USDT`    | Quote asset for the symbol      |   | The base currency |
-| pricePrecision    | integer | `2`       | Precision of the price          |   | Price Accuracy    |
-| quantityPrecision | integer | `6`       | Precision of the quantity       |   | Quantity accuracy |
+| symbol            | string  | `BTCUSDT` | Name of the symbol                      |   | Currency to name  |
+| ----------------- | ------- | --------- | --------------------------------------- | - | ----------------- |
+| baseAsset         | string  | `BTC`     | Underlying asset for the symbol         |   | base currency     |
+| quoteAsset        | string  | `USDT`    | Quote asset for the symbol              |   | The base currency |
+| pricePrecision    | integer | `2`       | Precision of the price                  |   | Price Accuracy    |
+| quantityPrecision | integer | `6`       | Precision of the quantity               |   | Quantity accuracy |
+| limitAmountMin    | String  | 100       | Limit order minimum order amount quote  |   |                   |
+| limitPriceMin     | String  | 100       | Minimum price of a limit order          |   |                   |
+| limitVolumeMin    | String  | 100       | Limit order minimum order quantity base |   |                   |
+| baseAssetName     | String  | BTC       | Base Currency Display Name              |   |                   |
+| quoteAssetName    | String  | USDT      | Quote Currency Display Name             |   |                   |
+| SymbolName        | String  | BTC/USDT  | Trading Pair Display Name               |   |                   |
+| feeRateMaker      | String  | 0.002     | Maker Procedure rate                    |   |                   |
+| feeRateTaker      | String  | 0.002     | Taker Procedure rate                    |   |                   |
 
 ## Market
 
-### Security Type: [None](broken-reference)
+Security Type: [None](broken-reference)
 
-{% swagger method="get" path="/sapi/v1/depth" baseUrl="https://openapi.xxx.com" summary=" Depth" %}
-{% swagger-description %}
- market detpth data
-{% endswagger-description %}
+### &#x20;Depth
 
-{% swagger-parameter in="query" name="limit" type="integer" %}
-Default 100; Max 100
-{% endswagger-parameter %}
+<mark style="color:blue;">`GET`</mark> `https://openapi.xxx.xx/sapi/v2/depth`
 
-{% swagger-parameter in="query" name="symbol" type="String" required="true" %}
-Symbol Name E.g. BTCUSDT
-{% endswagger-parameter %}
+&#x20;market detpth data
 
-{% swagger-response status="200: OK" description=" Successfully retrieved market depth data" %}
+#### Query Parameters
+
+| Name                                     | Type    | Description               |
+| ---------------------------------------- | ------- | ------------------------- |
+| limit                                    | integer | Default 100; Max 100      |
+| symbol<mark style="color:red;">\*</mark> | String  | Symbol Name E.g. BTC/USDT |
+
+{% tabs %}
+{% tab title="200: OK  Successfully retrieved market depth data" %}
 ```javascript
 {
   "bids": [
@@ -134,8 +174,8 @@ Symbol Name E.g. BTCUSDT
   ]
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 **weight(IP/UID): 5**
 
@@ -156,18 +196,26 @@ The fields bids and asks are lists of order book price level entries, sorted fro
 
 
 
-{% swagger method="get" path="/sapi/v1/ticker" baseUrl="https://openapi.xxx.com" summary=" 24hrs ticker" %}
-{% swagger-description %}
- 24 hour price change statistics.
-{% endswagger-description %}
+### &#x20;24hrs ticker
 
-{% swagger-parameter in="query" name="symbol" required="true" %}
-Symbol Name. E.g. 
+<mark style="color:blue;">`GET`</mark> `https://openapi.xxx.xx/sapi/v2/ticker`
 
-`BTCUSDT`
-{% endswagger-parameter %}
+&#x20;24 hour price change statistics.
 
-{% swagger-response status="200: OK" description=" Successfully retrieved ticker data" %}
+* If `symbol` parameter is not provided, the API will consume a significantly higher rate limit, and the response structure will also be different.
+* If the symbol is not sent, orders for all symbols will be returned in an array.
+
+#### Query Parameters
+
+ps: If both `symbol` and `symbols` are provided, `symbol` takes precedence. If neither is provided, ticker data for all symbols will be returned.
+
+| Name    | Type   | Description                                                                          |
+| ------- | ------ | ------------------------------------------------------------------------------------ |
+| symbol  | String | Symbol Name E.g. BTC/USDT                                                            |
+| symbols | String | _**Coin pair name**: Use English commas to separate multiple pairs. btcusdt,ethusdt_ |
+
+{% tabs %}
+{% tab title="200: OK  Successfully retrieved ticker data" %}
 ```javascript
 {
     "high": "9279.0301",
@@ -175,44 +223,100 @@ Symbol Name. E.g.
     "last": "9200",
     "low": "9279.0301",
     "rose": "0",
-    "time": 1595563624731
+    "time": 1595563624731,
+    "symbol": "btcusdt",
+    "amount": "3213",
+    "askPrice": "123",
+    "askVolume": "213213"
+    "bidPrice": "12323",
+    "bidVolume": "213213"
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
+
+{% tabs %}
+{% tab title="200: OK  Successfully retrieve ticker information without passing symbol." %}
+```javascript
+[
+    {
+        "high": "9279.0301",
+        "vol": "1302",
+        "last": "9200",
+        "low": "9279.0301",
+        "rose": "0",
+        "time": 1595563624731
+        "symbol": "btcusdt",
+        "amount": "3213",
+        "askPrice": "123",
+        "askVolume": "213213"
+        "bidPrice": "12323",
+        "bidVolume": "213213"
+    },{
+        "high": "9279.0301",
+        "vol": "1302",
+        "last": "9200",
+        "low": "9279.0301",
+        "rose": "0",
+        "time": 1595563624731,
+        "symbol": "ethusdt",
+        "amount": "3213",
+        "askPrice": "123",
+        "askVolume": "213213"
+        "bidPrice": "12323",
+        "bidVolume": "213213"
+    }
+]
+```
+{% endtab %}
+{% endtabs %}
 
 **weight(IP/UID): 5**
 
+**`symbol` not provided: weight = 80**
+
+**`symbols` not provided: weight = 80**
+
+**`symbols` 1-20: weight = 5**
+
+**`symbols` 21-100: weight = 40**
+
+**`symbols` ≥ 101: weight = 80**
+
 #### Response:
 
-| time | long  | `1595563624731` | Open Time    |   |
-| ---- | ----- | --------------- | ------------ | - |
-| high | float | `9900`          | High Price   |   |
-| low  | float | `8800.34`       | Low Price    |   |
-| open | float | `8700`          | Open Price   |   |
-| last | float | `8900`          | Last Price   |   |
-| vol  | float | `4999`          | Trade Volume |   |
+| time      | long   | `1595563624731` | Open Time                             |   |
+| --------- | ------ | --------------- | ------------------------------------- | - |
+| high      | float  | `9900`          | High Price                            |   |
+| low       | float  | `8800.34`       | Low Price                             |   |
+| open      | float  | `8700`          | Open Price                            |   |
+| last      | float  | `8900`          | Last Price                            |   |
+| vol       | float  | `4999`          | Trade Volume                          |   |
+| rose      | float  | 0               | Price increase or Price rise          |   |
+| symbol    | String | btcusdt         | symbol                                |   |
+| amount    | String | 1233            | Trading Volume, Quote Currency Volume |   |
+| askPrice  | String | 23321           | Best Ask Price                        |   |
+| askVolume | String | 3321            | Best Ask Size                         |   |
+| bidPrice  | String | 21              | Best Bid Price                        |   |
+| bidVolume | String | 12              | Best Bid Size                         |   |
 
 
 
 
 
-{% swagger method="get" path="/sapi/v1/trades" baseUrl="https://openapi.xxx.com" summary="Recent Trades List" %}
-{% swagger-description %}
+### Recent Trades List
 
-{% endswagger-description %}
+<mark style="color:blue;">`GET`</mark> `https://openapi.xxx.xx/sapi/v2/trades`
 
-{% swagger-parameter in="query" name="symbol" required="true" %}
-Symbol Name. E.g. 
+#### Query Parameters
 
-`BTCUSDT`
-{% endswagger-parameter %}
+| Name                                     | Type   | Description               |
+| ---------------------------------------- | ------ | ------------------------- |
+| symbol<mark style="color:red;">\*</mark> | String | Symbol Name E.g. BTC/USDT |
+| limit                                    | String | Default 100; Max 1000     |
 
-{% swagger-parameter in="query" name="limit" %}
-Default 100; Max 1000Responses200
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="" %}
+{% tabs %}
+{% tab title="200: OK " %}
 ```javascript
 {
     "list":[
@@ -225,78 +329,35 @@ Default 100; Max 1000Responses200
     ]
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 **weight(IP/UID): 5**
 
 #### Response:
 
-| price | float  | `0.055`         | The price of the trade |   |
-| ----- | ------ | --------------- | ---------------------- | - |
-| time  | long   | `1537797044116` | Current timestamp (ms) |   |
-| qty   | float  | `5`             | The quantity traded    |   |
-| side  | string | `BUY/SELL`      | Taker side             |   |
+<table data-header-hidden><thead><tr><th width="150">name</th><th>type</th><th>example</th><th>description</th><th></th></tr></thead><tbody><tr><td>price</td><td>float</td><td><code>0.055</code></td><td>The price of the trade</td><td></td></tr><tr><td>time</td><td>long</td><td><code>1537797044116</code></td><td>Current timestamp (ms)</td><td></td></tr><tr><td>qty</td><td>float</td><td><code>5</code></td><td>The quantity traded</td><td></td></tr><tr><td>side</td><td>string</td><td><code>BUY/SELL</code></td><td>Taker side</td><td></td></tr></tbody></table>
 
 
 
 
 
-{% swagger method="get" path="/sapi/v1/klines" baseUrl="https://openapi.xxx.com" summary="Kline/candlestick data" %}
-{% swagger-description %}
+### Kline/candlestick data
 
-{% endswagger-description %}
+<mark style="color:blue;">`GET`</mark> `https://openapi.xxx.xx/sapi/v2/klines`
 
-{% swagger-parameter in="query" name="symbol" type="" required="true" %}
-Symbol Name. E.g. 
+#### Query Parameters
 
-`BTCUSDT`
-{% endswagger-parameter %}
+| Name                                       | Type   | Description                                                                                                                                                                                                      |
+| ------------------------------------------ | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| symbol<mark style="color:red;">\*</mark>   |        | Symbol Name E.g. BTC/USDT                                                                                                                                                                                        |
+| interval<mark style="color:red;">\*</mark> | String | <p>Interval of the Kline. Possible values include: <code>1min</code>,<code>5min</code>,<code>15min</code>,<code>30min</code>,<code>60min</code>,<code>1day</code>,<code>1week</code>,<code>1month</code><br></p> |
+|  Default 100; Max 300                      | String | Default 100; Max 300Responses200                                                                                                                                                                                 |
+| startTime                                  | long   | startTime  example:`1538728740000`                                                                                                                                                                               |
+| endTime                                    | long   | endTime example:`1538728740000`                                                                                                                                                                                  |
 
-{% swagger-parameter in="query" name="interval" required="true" %}
-Interval of the Kline. Possible values include: 
-
-`1min`
-
-,
-
-`5min`
-
-,
-
-`15min`
-
-,
-
-`30min`
-
-,
-
-`60min`
-
-,
-
-`1day`
-
-,
-
-`1week`
-
-,
-
-`1month`
-
-\
-
-
-
-{% endswagger-parameter %}
-
-{% swagger-parameter in="query" name=" Default 100; Max 300" %}
-Default 100; Max 300Responses200
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="" %}
+{% tabs %}
+{% tab title="200: OK " %}
 ```javascript
 [
     {
@@ -325,216 +386,144 @@ Default 100; Max 300Responses200
     }
 ]
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 **weight(IP/UID): 1**
 
 #### Response:
 
-| `idx` | long  | `1538728740000` | Open time   |   |
-| ----- | ----- | --------------- | ----------- | - |
-| open  | float | `36.00000`      | open price  |   |
-| close | float | `33.00000`      | close price |   |
-| high  | float | `36.00000`      | high price  |   |
-| low   | float | `30.00000`      | low price   |   |
-| vol   | float | `2456.111`      | volume      |   |
+<table data-header-hidden><thead><tr><th>name</th><th width="150">type</th><th>example</th><th>description</th><th></th></tr></thead><tbody><tr><td><code>idx</code></td><td>long</td><td><code>1538728740000</code></td><td>Open time</td><td></td></tr><tr><td>open</td><td>float</td><td><code>36.00000</code></td><td>open price</td><td></td></tr><tr><td>close</td><td>float</td><td><code>33.00000</code></td><td>close price</td><td></td></tr><tr><td>high</td><td>float</td><td><code>36.00000</code></td><td>high price</td><td></td></tr><tr><td>low</td><td>float</td><td><code>30.00000</code></td><td>low price</td><td></td></tr><tr><td>vol</td><td>float</td><td><code>2456.111</code></td><td>volume</td><td></td></tr></tbody></table>
 
-### Trade
+## Trade
 
 ### Security Type: [TRADE](broken-reference)
 
 Endpoints under **Trade** require an API Key and a signature
 
-{% swagger method="post" path="/sapi/v1/order" baseUrl="https://openapi.xxx.com" summary=" New Order" %}
-{% swagger-description %}
- 
+### &#x20;New Order
 
-**Rate Limit: 100times/2s**
-{% endswagger-description %}
+<mark style="color:green;">`POST`</mark> `https://openapi.xxx.xx/sapi/v2/order`
 
-{% swagger-parameter in="query" name="X-CH-SIGN" type="string" %}
-Sign
-{% endswagger-parameter %}
+&#x20;**Rate Limit: 100times/2s**
 
-{% swagger-parameter in="query" name="X-CH-APIKEY" type="string" %}
-Your API-key
-{% endswagger-parameter %}
+#### Query Parameters
 
-{% swagger-parameter in="query" name="X-CH-TS" type="integer" %}
-timestamp
-{% endswagger-parameter %}
+| Name        | Type    | Description  |
+| ----------- | ------- | ------------ |
+| X-CH-SIGN   | string  | Sign         |
+| X-CH-APIKEY | string  | Your API-key |
+| X-CH-TS     | integer | timestamp    |
 
-{% swagger-parameter in="body" name="symbol" required="true" %}
-Symbol Name. E.g. 
+#### Request Body
 
-`BTCUSDT`
-{% endswagger-parameter %}
+| Name                                     | Type    | Description                                                                                                     |
+| ---------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------- |
+| symbol<mark style="color:red;">\*</mark> | String  | Symbol Name E.g. BTC/USDT                                                                                       |
+| volume<mark style="color:red;">\*</mark> | number  | Order vol. For MARKET BUY orders, vol=amount.                                                                   |
+| side<mark style="color:red;">\*</mark>   | String  | Side of the order,`BUY/SELL`                                                                                    |
+| type<mark style="color:red;">\*</mark>   | String  | Type of the order, LIMIT/MARKET/FOK/POST\_ONLY/IOC/STOP                                                         |
+| price<mark style="color:red;">\*</mark>  | number  | Order price, REQUIRED for LIMIT orders                                                                          |
+| newClientOrderId                         | String  | Unique order ID generated by users to mark their orders                                                         |
+| recvwindow                               | integer | Time window                                                                                                     |
+| triggerPrice                             | number  | <p>Take Profit and Stop Loss Trigger Price<br>(When the type is STOP, price and triggerPrice are required.)</p> |
 
-{% swagger-parameter in="body" name="volume" type="number" required="true" %}
-Order vol. For MARKET BUY orders, vol=amount.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="side" required="true" %}
-Side of the order,
-
-`BUY/SELL`
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="type" required="true" %}
-Type of the order, 
-
-`LIMIT/MARKET`
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="price" type="number" required="true" %}
-Order price, REQUIRED for LIMIT orders
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="newClientOrderId" %}
-Unique order ID generated by users to mark their orders
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="recvwindow" type="integer" %}
-Time window
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description=" Successfully post new order" %}
+{% tabs %}
+{% tab title="200: OK  Successfully post new order" %}
 ```javascript
 {
     'symbol': 'LXTUSDT', 
-    'orderId': '150695552109032492', 
+    'orderId': 150695552109032492, 
+    'orderIdString': '150695552109032492',//Character String Type Order ID (Recommended)
     'clientOrderId': '157371322565051',
     'transactTime': '1573713225668', 
     'price': '0.005452', 
     'origQty': '110', 
     'executedQty': '0', 
-    'status': 'NEW',
+    'status': '0',
     'type': 'LIMIT', 
     'side': 'SELL'
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 **weight(IP/UID): 5**
 
 #### Response:
 
-| orderId       | long    | `150695552109032492` | ID of the order                                                                                                     |   |
-| ------------- | ------- | -------------------- | ------------------------------------------------------------------------------------------------------------------- | - |
-| clientorderId | string  | `213443`             | A unique ID of the order.                                                                                           |   |
-| symbol        | string  | `BTCUSDT`            | Symbol Name                                                                                                         |   |
-| transactTime  | integer | `1273774892913`      | Time the order is placed                                                                                            |   |
-| price         | float   | `4765.29`            | Time the order is placed                                                                                            |   |
-| origQty       | float   | `1.01`               | Quantity ordered                                                                                                    |   |
-| executedQty   | float   | `1.01`               | Quantity of orders that has been executed                                                                           |   |
-| type          | string  | `LIMIT`              | Order type `LIMIT,MARKET`                                                                                           |   |
-| side          | string  | `BUY`                | Order side：`BUY, SELL`                                                                                              |   |
-| status        | string  | `NEW`                | The state of the order.Possible values include `NEW`, `PARTIALLY_FILLED`, `FILLED`, `CANCELED`, and `REJECTED`.POST |   |
+<table data-header-hidden><thead><tr><th>name</th><th width="150">type</th><th>example</th><th>description</th><th></th></tr></thead><tbody><tr><td>orderId</td><td>long</td><td><code>150695552109032492</code></td><td>ID of the order</td><td></td></tr><tr><td>clientorderId</td><td>string</td><td><code>213443</code></td><td>A unique ID of the order.</td><td></td></tr><tr><td>symbol</td><td>string</td><td><code>BTCUSDT</code></td><td>Symbol Name</td><td></td></tr><tr><td>symbolName</td><td>string</td><td>BTC/USDT</td><td>Currency display name: Either <strong>symbol</strong> or <strong>symbolName</strong> must be provided.<br>Example: BTC/USDT</td><td></td></tr><tr><td>transactTime</td><td>integer</td><td><code>1273774892913</code></td><td>Time the order is placed</td><td></td></tr><tr><td>price</td><td>float</td><td><code>4765.29</code></td><td>Time the order is placed</td><td></td></tr><tr><td>origQty</td><td>float</td><td><code>1.01</code></td><td>Quantity ordered</td><td></td></tr><tr><td>executedQty</td><td>float</td><td><code>1.01</code></td><td>Quantity of orders that has been executed</td><td></td></tr><tr><td>type</td><td>string</td><td><code>LIMIT</code></td><td>Order type <code>LIMIT,MARKET</code></td><td></td></tr><tr><td>side</td><td>string</td><td><code>BUY</code></td><td>Order side：<code>BUY, SELL</code></td><td></td></tr><tr><td>status</td><td>string</td><td><code>0</code></td><td>0 = new order</td><td></td></tr></tbody></table>
 
-{% swagger method="post" path="/sapi/v1/order/test" baseUrl="https://openapi.xxx.com" summary=" Test New Order" %}
-{% swagger-description %}
- Test new order creation and signature/recvWindow length. Creates and validates a new order but does not send the order into the matching engine.
-{% endswagger-description %}
+### &#x20;Test New Order
 
-{% swagger-parameter in="header" name="X-CH-SIGN" %}
-Sign
-{% endswagger-parameter %}
+<mark style="color:green;">`POST`</mark> `https://openapi.xxx.xx/sapi/v2/order/test`
 
-{% swagger-parameter in="header" name="X-CH-APIKEY" %}
-Your API-key
-{% endswagger-parameter %}
+&#x20;Test new order creation and signature/recvWindow length. Creates and validates a new order but does not send the order into the matching engine.
 
-{% swagger-parameter in="header" name="X-CH-TS" %}
-timestamp
-{% endswagger-parameter %}
+#### Headers
 
-{% swagger-parameter in="body" name="recvwindow" type="integer" %}
-Time window
-{% endswagger-parameter %}
+| Name        | Type   | Description  |
+| ----------- | ------ | ------------ |
+| X-CH-APIKEY | String | Your API-key |
+| X-CH-TS     | String | timestamp    |
+| X-CH-SIGN   | String | Sign         |
 
-{% swagger-parameter in="body" name="symbol" required="true" %}
-Symbol Name. E.g. 
+#### Request Body
 
-`BTCUSDT`
-{% endswagger-parameter %}
+| Name                                     | Type    | Description                                             |
+| ---------------------------------------- | ------- | ------------------------------------------------------- |
+| type<mark style="color:red;">\*</mark>   | String  | Type of the order, `LIMIT/MARKET`                       |
+| price<mark style="color:red;">\*</mark>  | number  | Order price, REQUIRED for `LIMIT` orders                |
+| volume<mark style="color:red;">\*</mark> | number  | Order vol. For MARKET BUY orders, vol=amount.           |
+| side<mark style="color:red;">\*</mark>   | String  | Side of the order, `BUY/SELL`                           |
+| symbol<mark style="color:red;">\*</mark> | String  | Symbol Name E.g. BTC/USDT                               |
+| recvwindow                               | integer | Time window                                             |
+| newClientorderId                         | String  | Unique order ID generated by users to mark their orders |
 
-{% swagger-parameter in="body" name="volume" type="number" required="true" %}
-Order vol. For MARKET BUY orders, vol=amount.
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="side" required="true" %}
-Side of the order, 
-
-`BUY/SELL`
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="type" required="true" %}
-Type of the order, 
-
-`LIMIT/MARKET`
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="price" type="number" required="true" %}
-Order price, REQUIRED for 
-
-`LIMIT`
-
- orders
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="newClientorderId" %}
-Unique order ID generated by users to mark their orders
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description=" Successfully test new order" %}
+{% tabs %}
+{% tab title="200: OK  Successfully test new order" %}
 ```javascript
 {
     // Response
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 **weight(IP/UID): 1**
 
-****
 
 
+### &#x20;Batch Orders
 
-{% swagger method="post" path="/sapi/v1/batchOrders" baseUrl="https://openapi.xxx.com" summary=" Batch Orders" %}
-{% swagger-description %}
- 
+<mark style="color:green;">`POST`</mark> `https://openapi.xxx.xx/sapi/v2/batchOrders`
 
-**batch contains at most 10 orders**
-{% endswagger-description %}
+&#x20;**batch contains at most 10 orders**
 
-{% swagger-parameter in="header" name="X-CH-SIGN" %}
-Sign
-{% endswagger-parameter %}
+#### Headers
 
-{% swagger-parameter in="header" name="X-CH-APIKEY" %}
-Your API-key
-{% endswagger-parameter %}
+| Name        | Type   | Description  |
+| ----------- | ------ | ------------ |
+| X-CH-APIKEY | String | Your API-key |
+| X-CH-TS     | String | timestamp    |
+| X-CH-SIGN   | String | Sign         |
 
-{% swagger-parameter in="header" name="X-CH-TS" %}
-timestamp
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="body" name="symbol" required="true" %}
-Batch order param
-{% endswagger-parameter %}
+| Name                                     | Type   | Description                                                                        |
+| ---------------------------------------- | ------ | ---------------------------------------------------------------------------------- |
+| orders                                   | number | <p>The batch order information can contain a maximum of 10 records.</p><p><br></p> |
+| symbol<mark style="color:red;">\*</mark> | String | Symbol Name E.g. BTC/USDT                                                          |
 
-{% swagger-parameter in="body" name="orders" type="number" %}
-Symbol Name. E.g. 
-
-`BTCUSDT`
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="" %}
+{% tabs %}
+{% tab title="200: OK " %}
 ```javascript
 {
+    "idsString": [ //Character String Type Order ID (Recommended)
+        "165964665990709251",
+        "165964665990709252",
+        "165964665990709253"
+    ],
     "ids": [
         165964665990709251,
         165964665990709252,
@@ -542,57 +531,52 @@ Symbol Name. E.g.
     ]
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 **weight(IP/UID): 10**
 
-#### Resquest `orders` field: <a href="#resquest-orders-field" id="resquest-orders-field"></a>
+#### Resquest `orders` field:
 
-| price     | long   | 1000           | Price of the order      |   |
-| --------- | ------ | -------------- | ----------------------- | - |
-| volume    | folat  | 20.1           | Vol of the order        |   |
-| side      | string | `BUY/SELL`     | Side of the order       |   |
-| batchType | string | `LIMIT/MARKET` | Batch type of the order |   |
+| name      | type   | Example        | Description |
+| --------- | ------ | -------------- | ----------- |
+| price     | folat  | 1000           | Price       |
+| volume    | folat  | 20.1           | Quantity    |
+| side      | String | BUY/SELL       | Direction   |
+| batchType | String | `LIMIT/MARKET` | Type        |
+
+#### Resquest <a href="#resquest-orders-field" id="resquest-orders-field"></a>
+
+| idsString | String  | “3213213” | A collection of order numbers of type String. |
+| --------- | ------- | --------- | --------------------------------------------- |
+| ids       | integer | 2100      | Collection of order numbers.                  |
 
 
 
 
 
-{% swagger method="get" path="/sapi/v1/order" baseUrl="https://openapi.xxx.com" summary=" Query Order" %}
-{% swagger-description %}
- 
+### &#x20;Query Order
 
-**Rate Limit: 20times/2s**
-{% endswagger-description %}
+<mark style="color:blue;">`GET`</mark> `https://openapi.xxx.xx/sapi/v2/order`
 
-{% swagger-parameter in="header" name="X-CH-SIGN" %}
-Sign
-{% endswagger-parameter %}
+#### Query Parameters
 
-{% swagger-parameter in="header" name="X-CH-APIKEY" %}
-Your API-key
-{% endswagger-parameter %}
+| Name                                      | Type   | Description                                                                                      |
+| ----------------------------------------- | ------ | ------------------------------------------------------------------------------------------------ |
+| orderId<mark style="color:red;">\*</mark> | String | Order ID                                                                                         |
+| newClientorderId                          | String | Client Order Id, Unique order ID generated by users to mark their orders. E.g. 354444heihieddada |
+| symbol<mark style="color:red;">\*</mark>  | String | Symbol Name E.g. BTC/USDT                                                                        |
 
-{% swagger-parameter in="header" name="X-CH-TS" %}
-timestampResponses200
-{% endswagger-parameter %}
+#### Headers
 
-{% swagger-parameter in="query" name="orderId" required="true" %}
-Order ID
-{% endswagger-parameter %}
+| Name        | Type   | Description           |
+| ----------- | ------ | --------------------- |
+| X-CH-APIKEY | String | Your API-key          |
+| X-CH-TS     | String | timestampResponses200 |
+| X-CH-SIGN   | String | Sign                  |
 
-{% swagger-parameter in="query" name="newClientorderId" %}
-Client Order Id, Unique order ID generated by users to mark their orders. E.g. 354444heihieddada
-{% endswagger-parameter %}
-
-{% swagger-parameter in="query" name="symbol" required="true" %}
-Symbol Name. E.g. 
-
-`BTCUSDl`
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="" %}
+{% tabs %}
+{% tab title="200: OK " %}
 ```javascript
 {
     'orderId': '499890200602846976', 
@@ -608,63 +592,39 @@ Symbol Name. E.g.
     'transactTime': '1574327555669'
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 **weight(IP/UID): 1**
 
 #### **Response:**
 
-| orderId       | long   | `150695552109032492` | Order ID (system generated)                                                                                                                                                             |   |
-| ------------- | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | - |
-| clientorderId | string | `213443`             | Order ID (sent by yourself)                                                                                                                                                             |   |
-| symbol        | string | `BTCUSDT`            | Currency Pair Name                                                                                                                                                                      |   |
-| price         | float  | `4765.29`            | Order Price                                                                                                                                                                             |   |
-| origQty       | float  | `1.01`               | Number of orders                                                                                                                                                                        |   |
-| executedQty   | float  | `1.01`               | Number of orders already filled                                                                                                                                                         |   |
-| avgPrice      | float  | `4754.24`            | Average price of orders already filled                                                                                                                                                  |   |
-| type          | string | limit                | The order type`LIMIT,MARKET`                                                                                                                                                            |   |
-| side          | string | `BUY`                | Order direction. Possible values can only be: BUY (buy long) and SELL (sell short)                                                                                                      |   |
-| status        | string | `NEW`                | Order status. Possible values are NEW (new order, no transaction), PARTIALLY\_FILLED (partially filled), FILLED (fully filled), CANCELED (cancelled) and REJECTED (order rejected).POST |   |
+<table data-header-hidden><thead><tr><th>name</th><th width="150">type</th><th>Example</th><th>Description</th><th></th></tr></thead><tbody><tr><td>orderId</td><td>long</td><td><code>150695552109032492</code></td><td>Order ID (system generated)</td><td></td></tr><tr><td>clientorderId</td><td>string</td><td><code>213443</code></td><td>Order ID (sent by yourself)</td><td></td></tr><tr><td>symbol</td><td>string</td><td><code>BTCUSDT</code></td><td>Currency Pair Name</td><td></td></tr><tr><td>price</td><td>float</td><td><code>4765.29</code></td><td>Order Price</td><td></td></tr><tr><td>origQty</td><td>float</td><td><code>1.01</code></td><td>Number of orders</td><td></td></tr><tr><td>executedQty</td><td>float</td><td><code>1.01</code></td><td>Number of orders already filled</td><td></td></tr><tr><td>avgPrice</td><td>float</td><td><code>4754.24</code></td><td>Average price of orders already filled</td><td></td></tr><tr><td>type</td><td>string</td><td>limit</td><td>The order type<code>LIMIT,MARKET</code></td><td></td></tr><tr><td>side</td><td>string</td><td><code>BUY</code></td><td>Order direction. Possible values can only be: BUY (buy long) and SELL (sell short)</td><td></td></tr><tr><td>status</td><td>string</td><td><code>NEW</code></td><td>Order status. Possible values are NEW (new order, no transaction), PARTIALLY_FILLED (partially filled), FILLED (fully filled), CANCELED (cancelled) and REJECTED (order rejected).POST</td><td></td></tr><tr><td>transactTime</td><td>string</td><td>1574327555669</td><td>Order Creation Time</td><td></td></tr></tbody></table>
 
 
 
+### Cancel Order
 
+<mark style="color:green;">`POST`</mark> `https://openapi.xxx.xx/sapi/v2/cancel`
 
-{% swagger method="post" path="/sapi/v1/cancel" baseUrl="https://openapi.xxx.com" summary="Cancel Order" %}
-{% swagger-description %}
- 
+#### Headers
 
-**Rate Limit: 100time/2s**
-{% endswagger-description %}
+| Name        | Type   | Description  |
+| ----------- | ------ | ------------ |
+| X-CH-APIKEY | String | Your API-key |
+| X-CH-TS     | String | timestamp    |
+| X-CH-SIGN   | String | Sign         |
 
-{% swagger-parameter in="header" name="X-CH-SIGN" %}
-Sign
-{% endswagger-parameter %}
+#### Request Body
 
-{% swagger-parameter in="header" name="X-CH-APIKEY" %}
-Your API-key
-{% endswagger-parameter %}
+| Name                                      | Type   | Description                                                                                      |
+| ----------------------------------------- | ------ | ------------------------------------------------------------------------------------------------ |
+| newClientOrderId                          | String | Client Order Id, Unique order ID generated by users to mark their orders. E.g. 354444heihieddada |
+| orderId<mark style="color:red;">\*</mark> | String | Order ID                                                                                         |
+| symbol<mark style="color:red;">\*</mark>  | String | Symbol Name E.g. BTC/USDT                                                                        |
 
-{% swagger-parameter in="header" name="X-CH-TS" %}
-timestamp
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="orderId" required="true" %}
-Order ID
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="newClientOrderId" type="String" %}
-Client Order Id, Unique order ID generated by users to mark their orders. E.g. 354444heihieddada
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="symbol" required="true" %}
-Symbol Name. E.g. 
-
-`BTCUSDT`
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="" %}
+{% tabs %}
+{% tab title="200: OK " %}
 ```javascript
 {
     'symbol': 'BHTUSDT', 
@@ -674,57 +634,42 @@ Symbol Name. E.g.
 }
 
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 **weight(IP/UID): 5**
 
 #### Response:
 
-| orderId       | long   | `150695552109032492` | ID of the order                                                                                                                                                                       |   |
-| ------------- | ------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | - |
-| clientorderId | string | `213443`             | Unique ID of the order.                                                                                                                                                               |   |
-| symbol        | string | `BTCUSDT`            | Name of the symbol                                                                                                                                                                    |   |
-| status        | string | `NEW`                | <p>The state of the order.Possible values include <code>NEW</code>, <code>PARTIALLY_FILLED</code>, <code>FILLED</code>, <code>CANCELED</code>, and <code>REJECTED</code>.POST<br></p> |   |
+<table data-header-hidden><thead><tr><th>name</th><th width="150">type</th><th>example</th><th>description</th><th></th></tr></thead><tbody><tr><td>orderId</td><td>long</td><td><code>150695552109032492</code></td><td>ID of the order</td><td></td></tr><tr><td>clientorderId</td><td>string</td><td><code>213443</code></td><td>Unique ID of the order.</td><td></td></tr><tr><td>symbol</td><td>string</td><td><code>BTCUSDT</code></td><td>Name of the symbol</td><td></td></tr><tr><td>status</td><td>string</td><td><code>NEW</code></td><td>The state of the order.Possible values include <code>NEW</code>, <code>PARTIALLY_FILLED</code>, <code>FILLED</code>, <code>CANCELED</code>, and <code>REJECTED</code>.POST<br></td><td></td></tr></tbody></table>
 
 
 
 
 
-{% swagger method="post" path="/sapi/v1/batchCancel" baseUrl="https://openapi.xxx.com" summary=" Batch cancel orders" %}
-{% swagger-description %}
- 
+### &#x20;Batch cancel orders
 
-**batch contains at most 10 orders**
-{% endswagger-description %}
+<mark style="color:green;">`POST`</mark> `https://openapi.xxx.xx/sapi/v2/batchCancel`
 
-{% swagger-parameter in="header" name="X-CH-SIGN" %}
-Sign
-{% endswagger-parameter %}
+&#x20;**batch contains at most 10 orders**
 
-{% swagger-parameter in="header" name="X-CH-APIKEY" %}
-Your API-key
-{% endswagger-parameter %}
+#### Headers
 
-{% swagger-parameter in="header" name="X-CH-TS" %}
-timestamp
-{% endswagger-parameter %}
+| Name        | Type   | Description  |
+| ----------- | ------ | ------------ |
+| X-CH-APIKEY | String | Your API-key |
+| X-CH-TS     | String | timestamp    |
+| X-CH-SIGN   | String | Sign         |
 
-{% swagger-parameter in="body" name="orderIds" %}
-Order ID collection 
+#### Request Body
 
-`[123,456]`
+| Name                                       | Type   | Description                                    |
+| ------------------------------------------ | ------ | ---------------------------------------------- |
+| orderIds<mark style="color:red;">\*</mark> | String | Order ID collection `[123,456]`Responses200GET |
+| symbol<mark style="color:red;">\*</mark>   | String | Symbol Name E.g. BTC/USDT                      |
 
-Responses200GET
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="symbol" required="true" %}
-Symbol Name. E.g. 
-
-`BTCUSDT`
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="" %}
+{% tabs %}
+{% tab title="200: OK " %}
 ```javascript
 {
     "success": [
@@ -737,43 +682,41 @@ Symbol Name. E.g.
     ]
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 **weight(IP/UID): 10**
 
-{% swagger method="get" path="/sapi/v1/openOrders" baseUrl="https://openapi.xxx.com" summary=" Current Open Orders" %}
-{% swagger-description %}
-**Rate Limit: 20times/2s**
-{% endswagger-description %}
+### &#x20;Current Open Orders
 
-{% swagger-parameter in="header" name="X-CH-SIGN" %}
-Sign
-{% endswagger-parameter %}
+<mark style="color:blue;">`GET`</mark> `https://openapi.xxx.xx/sapi/v2/openOrders`
 
-{% swagger-parameter in="header" name="X-CH-APIKEY" %}
-Your API-key
-{% endswagger-parameter %}
+If `symbol` parameter is not provided, the API will consume a significantly higher rate limit.
 
-{% swagger-parameter in="header" name="X-CH-TS" %}
-timestamp
-{% endswagger-parameter %}
+#### Query Parameters
 
-{% swagger-parameter in="query" name="symbol" required="true" %}
-Symbol Name. E.g. 
+| Name   | Type    | Description               |
+| ------ | ------- | ------------------------- |
+| symbol | String  | Symbol Name E.g. BTC/USDT |
+| limit  | Integer | Default 100; Max 1000     |
 
-`BTCUSDT`
-{% endswagger-parameter %}
+* If the symbol is not sent, orders for all symbols will be returned in an array.
 
-{% swagger-parameter in="query" name="limit" %}
-Default 100; Max 1000
-{% endswagger-parameter %}
+#### Headers
 
-{% swagger-response status="200: OK" description="" %}
+| Name        | Type   | Description  |
+| ----------- | ------ | ------------ |
+| X-CH-APIKEY | String | Your API-key |
+| X-CH-TS     | String | timestamp    |
+| X-CH-SIGN   | String | Sign         |
+
+{% tabs %}
+{% tab title="200: OK " %}
 ```javascript
 [
     {
-        'orderId': '499902955766523648', 
+        'orderId': 499902955766523648, 
+        'orderIdString': '499902955766523648', //Character String Type Order ID (Recommended)
         'symbol': 'BHTUSDT', 
         'price': '0.01', 
         'origQty': '50', 
@@ -782,65 +725,103 @@ Default 100; Max 1000
         'status': 'NEW', 
         'type': 'LIMIT', 
         'side': 'BUY', 
-        'time': '1574329076202'
+        'time': '1574329076202',
+        'stopPrice': 123321,
+        'isWorking':true   
         },...
 ]
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 **weight(IP/UID): 1**
 
+**`symbol` not provided: weight = 80**
+
 #### **Response:**
 
-| orderId       | long   | `150695552109032492` | ID of the order                                                                                                    |   |
-| ------------- | ------ | -------------------- | ------------------------------------------------------------------------------------------------------------------ | - |
-| clientorderId | string | `213443`             | Unique ID of the order.                                                                                            |   |
-| symbol        | string | `BTCUSDT`            | Name of the symbol                                                                                                 |   |
-| price         | float  | `4765.29`            | Price of the order                                                                                                 |   |
-| origQty       | float  | `1.01`               | Quantity ordered                                                                                                   |   |
-| executedQty   | float  | `1.01`               | Quantity of orders that has been executed                                                                          |   |
-| avgPrice      | float  | `4754.24`            | Average price of filled orders.                                                                                    |   |
-| type          | string | `LIMIT`              | The order type`LIMIT,MARKET`                                                                                       |   |
-| side          | string | `BUY`                | The order side `BUY,SELL`                                                                                          |   |
-| status        | string | `NEW`                | The state of the order.Possible values include `NEW`, `PARTIALLY_FILLED`, `FILLED`, `CANCELED`, and `REJECTED`.GET |   |
+<table data-header-hidden><thead><tr><th>name</th><th width="150">type</th><th>example</th><th>description</th><th></th></tr></thead><tbody><tr><td>orderId</td><td>long</td><td><code>150695552109032492</code></td><td>ID of the order</td><td></td></tr><tr><td>orderIdString</td><td>string</td><td>"<code>150695552109032492"</code></td><td>Character String Type Order ID (Recommended)</td><td></td></tr><tr><td>clientorderId</td><td>string</td><td><code>213443</code></td><td>Unique ID of the order.</td><td></td></tr><tr><td>symbol</td><td>string</td><td><code>BTCUSDT</code></td><td>Name of the symbol</td><td></td></tr><tr><td>price</td><td>float</td><td><code>4765.29</code></td><td>Price of the order</td><td></td></tr><tr><td>origQty</td><td>float</td><td><code>1.01</code></td><td>Quantity ordered</td><td></td></tr><tr><td>executedQty</td><td>float</td><td><code>1.01</code></td><td>Quantity of orders that has been executed</td><td></td></tr><tr><td>avgPrice</td><td>float</td><td><code>4754.24</code></td><td>Average price of filled orders.</td><td></td></tr><tr><td>type</td><td>string</td><td><code>LIMIT</code></td><td>The order type<code>LIMIT,MARKET</code></td><td></td></tr><tr><td>side</td><td>string</td><td><code>BUY</code></td><td>The order side <code>BUY,SELL</code></td><td></td></tr><tr><td>status</td><td>string</td><td><code>NEW</code></td><td>The state of the order.Possible values include <code>NEW</code>, <code>PARTIALLY_FILLED</code>, <code>FILLED</code>, <code>CANCELED</code>, and <code>REJECTED</code>.GET</td><td></td></tr><tr><td>time</td><td>string</td><td>1574327555669</td><td>Creation Time</td><td></td></tr><tr><td>stopPrice</td><td>float</td><td>21323.32</td><td><p>Take Profit and Stop Loss Trigger Price</p><p>4o</p></td><td></td></tr><tr><td>isWorking</td><td>boolean</td><td>true</td><td>Does the order appear in the order book?</td><td></td></tr></tbody></table>
 
+### &#x20;History Orders
 
+<mark style="color:blue;">`GET`</mark> `https://openapi.xxx.xx/sapi/v3/historyOrders`
 
-{% swagger method="get" path="/sapi/v1/myTrades" baseUrl="https://openapi.xxx.com" summary="Trades" %}
-{% swagger-description %}
- 
+If `symbol` parameter is not provided, the API will consume a significantly higher rate limit.
 
-**Rate Limt: 20times/2s**
-{% endswagger-description %}
+#### Query Parameters
 
-{% swagger-parameter in="header" name="X-CH-SIGN" %}
-Sign
-{% endswagger-parameter %}
+| Name      | Type    | Description                                                                                                                                                                                                                                                                                                                                                      |
+| --------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| symbol    | String  | Symbol Name E.g. BTC/USDT                                                                                                                                                                                                                                                                                                                                        |
+| limit     | Integer | Default 50; Max 100                                                                                                                                                                                                                                                                                                                                              |
+| startTime | Long    | <p>The start timestamp (ms)</p><ul><li>startTime and endTime are not passed, return 7 days by default;</li><li>Only startTime is passed, return range between startTime and startTime+7 days</li><li>Only endTime is passed, return range between endTime-7 days and endTime</li><li>If both are passed, the rule is endTime - startTime &#x3C;= 7 day</li></ul> |
+| endTime   | Long    | The end timestamp (ms)                                                                                                                                                                                                                                                                                                                                           |
 
-{% swagger-parameter in="header" name="X-CH-APIKEY" %}
-Your API-key
-{% endswagger-parameter %}
+* If the symbol is not sent, orders for all symbols will be returned in an array.
+* Support query within the last 6 months only.
 
-{% swagger-parameter in="header" name="X-CH-TS" %}
-timestamp
-{% endswagger-parameter %}
+#### Headers
 
-{% swagger-parameter in="query" name="symbol" required="true" %}
-Symbol Name. E.g. 
+| Name        | Type   | Description  |
+| ----------- | ------ | ------------ |
+| X-CH-APIKEY | String | Your API-key |
+| X-CH-TS     | String | timestamp    |
+| X-CH-SIGN   | String | Sign         |
 
-`BTCUSDT`
-{% endswagger-parameter %}
+{% tabs %}
+{% tab title="200: OK " %}
+```javascript
+[
+    {
+        'orderId': 499902955766523648, 
+        'orderIdString': '499902955766523648', //Character String Type Order ID (Recommended)
+        'symbol': 'BHTUSDT', 
+        'price': '0.01', 
+        'origQty': '50', 
+        'executedQty': '0', 
+        'avgPrice': '0', 
+        'status': 'NEW', 
+        'type': 'LIMIT', 
+        'side': 'BUY', 
+        'time': '1574329076202',
+        'stopPrice': 123321,
+        'isWorking':true   
+        },...
+]
+```
+{% endtab %}
+{% endtabs %}
 
-{% swagger-parameter in="query" name="limit" %}
-Default 100; Max1000
-{% endswagger-parameter %}
+**weight(IP/UID): 20**
 
-{% swagger-parameter in="query" name="fromId" %}
-Trade Id to fetch from
-{% endswagger-parameter %}
+**`symbol` not provided: weight = 80**
 
-{% swagger-response status="200: OK" description="" %}
+#### **Response:**
+
+<table data-header-hidden><thead><tr><th>name</th><th width="150">type</th><th>example</th><th>description</th><th></th></tr></thead><tbody><tr><td>orderId</td><td>long</td><td><code>150695552109032492</code></td><td>ID of the order</td><td></td></tr><tr><td>orderIdString</td><td>string</td><td>"<code>150695552109032492"</code></td><td>Character String Type Order ID (Recommended)</td><td></td></tr><tr><td>clientorderId</td><td>string</td><td><code>213443</code></td><td>Unique ID of the order.</td><td></td></tr><tr><td>symbol</td><td>string</td><td><code>BTCUSDT</code></td><td>Name of the symbol</td><td></td></tr><tr><td>price</td><td>float</td><td><code>4765.29</code></td><td>Price of the order</td><td></td></tr><tr><td>origQty</td><td>float</td><td><code>1.01</code></td><td>Quantity ordered</td><td></td></tr><tr><td>executedQty</td><td>float</td><td><code>1.01</code></td><td>Quantity of orders that has been executed</td><td></td></tr><tr><td>avgPrice</td><td>float</td><td><code>4754.24</code></td><td>Average price of filled orders.</td><td></td></tr><tr><td>type</td><td>string</td><td><code>LIMIT</code></td><td>The order type<code>LIMIT,MARKET</code></td><td></td></tr><tr><td>side</td><td>string</td><td><code>BUY</code></td><td>The order side <code>BUY,SELL</code></td><td></td></tr><tr><td>status</td><td>string</td><td><code>NEW</code></td><td>The state of the order.Possible values include <code>NEW</code>, <code>PARTIALLY_FILLED</code>, <code>FILLED</code>, <code>CANCELED</code>, and <code>REJECTED</code>.GET</td><td></td></tr><tr><td>time</td><td>string</td><td>1574327555669</td><td>Creation Time</td><td></td></tr><tr><td>stopPrice</td><td>float</td><td>21323.32</td><td><p>Take Profit and Stop Loss Trigger Price</p><p>4o</p></td><td></td></tr><tr><td>isWorking</td><td>boolean</td><td>true</td><td>Does the order appear in the order book?</td><td></td></tr></tbody></table>
+
+### Trades
+
+<mark style="color:blue;">`GET`</mark> `https://openapi.xxx.xx/sapi/v2/myTrades`
+
+#### Query Parameters
+
+| Name                                     | Type   | Description               |
+| ---------------------------------------- | ------ | ------------------------- |
+| symbol<mark style="color:red;">\*</mark> | String | Symbol Name E.g. BTC/USDT |
+| limit                                    | String | Default 100; Max1000      |
+| fromId                                   | String | Trade Id to fetch from    |
+
+#### Headers
+
+| Name        | Type   | Description  |
+| ----------- | ------ | ------------ |
+| X-CH-APIKEY | String | Your API-key |
+| X-CH-TS     | String | timestamp    |
+| X-CH-SIGN   | String | Sign         |
+
+{% tabs %}
+{% tab title="200: OK " %}
 ```javascript
 [
   {
@@ -854,59 +835,100 @@ Trade Id to fetch from
     "isBuyer": true,
     "isMaker": false,
     "feeCoin": "ETH",
-    "fee":"0.001"
+    "fee":"0.001",
+    "bidUserId":23334,
+    "askUserId":44112
   },...
 ]
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 **weight(IP/UID): 1**
 
 #### **Response:**
 
-| symbol  | string  | `BTCUSDT`            | Name of the symbol            |
-| ------- | ------- | -------------------- | ----------------------------- |
-| id      | integer | `28457`              | Trade ID                      |
-| bidId   | long    | `150695552109032492` | Bid Order ID                  |
-| askId   | long    | `150695552109032492` | Ask Order ID                  |
-| price   | integer | `4.01`               | Price of the trade            |
-| qty     | float   | `12`                 | Quantiry of the trade         |
-| time    | number  | `1499865549590`      | timestamp of the trade        |
-| isBuyer | bool    | `true`               | `true`= Buyer `false`= Seller |
-| isMaker | bool    | `false`              | `true`=Maker `false`=Taker    |
-| feeCoin | string  | `ETH`                | Trading fee coin              |
-| fee     | number  | `0.001`              | Trading fee                   |
+<table data-header-hidden><thead><tr><th>name</th><th width="150">type</th><th>example</th><th>description</th></tr></thead><tbody><tr><td>symbol</td><td>string</td><td><code>BTCUSDT</code></td><td>Name of the symbol</td></tr><tr><td>id</td><td>integer</td><td><code>28457</code></td><td>Trade ID</td></tr><tr><td>bidId</td><td>long</td><td><code>150695552109032492</code></td><td>Bid Order ID</td></tr><tr><td>askId</td><td>long</td><td><code>150695552109032492</code></td><td>Ask Order ID</td></tr><tr><td>price</td><td>integer</td><td><code>4.01</code></td><td>Price of the trade</td></tr><tr><td>qty</td><td>float</td><td><code>12</code></td><td>Quantiry of the trade</td></tr><tr><td>time</td><td>number</td><td><code>1499865549590</code></td><td>timestamp of the trade</td></tr><tr><td>isBuyer</td><td>bool</td><td><code>true</code></td><td><code>true</code>= Buyer <code>false</code>= Seller</td></tr><tr><td>isMaker</td><td>bool</td><td><code>false</code></td><td><code>true</code>=Maker <code>false</code>=Taker</td></tr><tr><td>feeCoin</td><td>string</td><td><code>ETH</code></td><td>Trading fee coin</td></tr><tr><td>fee</td><td>number</td><td><code>0.001</code></td><td>Trading fee</td></tr><tr><td>bidUserId</td><td>long</td><td>23334</td><td>Buyer UID</td></tr><tr><td>askUserId</td><td>long</td><td>44112</td><td>Seller UID</td></tr><tr><td>isSelf</td><td>bool</td><td>true</td><td>whether is self dealt</td></tr></tbody></table>
 
-****
+### Trades-V3
+
+<mark style="color:blue;">`GET`</mark> `https://openapi.xxx.xx/sapi/v3/myTrades`
+
+If `symbol` parameter is not provided, the API will consume a significantly higher rate limit.
+
+#### Query Parameters
+
+| Name      | Type    | Description                                                                                                                                                                                                                                                                                                                                                       |
+| --------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| symbol    | String  | Symbol Name E.g. BTC/USDT                                                                                                                                                                                                                                                                                                                                         |
+| limit     | Integer | Default 50; Max 100                                                                                                                                                                                                                                                                                                                                               |
+| startTime | Long    | <p>The start timestamp (ms)</p><ul><li>startTime and endTime are not passed, return 7 days by default;</li><li>Only startTime is passed, return range between startTime and startTime+7 days</li><li>Only endTime is passed, return range between endTime-7 days and endTime</li><li>If both are passed, the rule is endTime - startTime &#x3C;= 7 days</li></ul> |
+| endTime   | Long    | The end timestamp (ms)                                                                                                                                                                                                                                                                                                                                            |
+
+* If the symbol is not sent, trades for all symbols will be returned in an array.
+* Support query within the last 6 months only.
+
+#### Headers
+
+| Name        | Type   | Description  |
+| ----------- | ------ | ------------ |
+| X-CH-APIKEY | String | Your API-key |
+| X-CH-TS     | String | timestamp    |
+| X-CH-SIGN   | String | Sign         |
+
+{% tabs %}
+{% tab title="200: OK " %}
+```javascript
+[
+  {
+    "symbol": "ETH/BTC",
+    "id": 100211,
+    "bidId": 150695552109032492,
+    "askId": 150695552109032493,
+    "price": "4.00000100",
+    "qty": "12.00000000",
+    "time": 1499865549590,
+    "isBuyer": true,
+    "isMaker": false,
+    "feeCoin": "ETH",
+    "fee":"0.001",
+    "bidUserId":23334,
+    "askUserId":44112
+  },...
+]
+```
+{% endtab %}
+{% endtabs %}
+
+**weight(IP/UID): 20**
+
+**`symbol` not provided: weight = 80**
+
+#### **Response:**
+
+<table data-header-hidden><thead><tr><th>name</th><th width="150">type</th><th>example</th><th>description</th></tr></thead><tbody><tr><td>symbol</td><td>string</td><td><code>BTC/USDT</code></td><td>Name of the symbol</td></tr><tr><td>id</td><td>integer</td><td><code>28457</code></td><td>Trade ID</td></tr><tr><td>bidId</td><td>long</td><td><code>150695552109032492</code></td><td>Bid Order ID</td></tr><tr><td>askId</td><td>long</td><td><code>150695552109032492</code></td><td>Ask Order ID</td></tr><tr><td>price</td><td>integer</td><td><code>4.01</code></td><td>Price of the trade</td></tr><tr><td>qty</td><td>float</td><td><code>12</code></td><td>Quantiry of the trade</td></tr><tr><td>time</td><td>number</td><td><code>1499865549590</code></td><td>timestamp of the trade</td></tr><tr><td>isBuyer</td><td>bool</td><td><code>true</code></td><td><code>true</code>= Buyer <code>false</code>= Seller</td></tr><tr><td>isMaker</td><td>bool</td><td><code>false</code></td><td><code>true</code>=Maker <code>false</code>=Taker</td></tr><tr><td>feeCoin</td><td>string</td><td><code>ETH</code></td><td>Trading fee coin</td></tr><tr><td>fee</td><td>number</td><td><code>0.001</code></td><td>Trading fee</td></tr><tr><td>bidUserId</td><td>long</td><td>23334</td><td>Buyer UID</td></tr><tr><td>askUserId</td><td>long</td><td>44112</td><td>Seller UID</td></tr><tr><td>isSelf</td><td>bool</td><td>true</td><td>whether is self dealt</td></tr></tbody></table>
 
 ## Account
 
-### Security Type: USER\_DATA
+Security Type: USER\_DATA
 
 Endpoints under Account require an API-key and a signature.\
 
 
-{% swagger method="get" path="/sapi/v1/account" baseUrl="https://openapi.xxx.com" summary=" Account Information" %}
-{% swagger-description %}
- 
+### &#x20;Account Information
 
-**Rate Limit: 20times/2s**
-{% endswagger-description %}
+<mark style="color:blue;">`GET`</mark> `https://openapi.xxx.xx/sapi/v1/account`
 
-{% swagger-parameter in="header" name="X-CH-SIGN" %}
-Sign
-{% endswagger-parameter %}
+#### Headers
 
-{% swagger-parameter in="header" name="X-CH-APIKEY" %}
-Your API-key
-{% endswagger-parameter %}
+| Name        | Type   | Description  |
+| ----------- | ------ | ------------ |
+| X-CH-APIKEY | String | Your API-key |
+| X-CH-TS     | String | timestamp    |
+| X-CH-SIGN   | String | Sign         |
 
-{% swagger-parameter in="header" name="X-CH-TS" %}
-timestamp
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description=" Successfully retrieved account information." %}
+{% tabs %}
+{% tab title="200: OK  Successfully retrieved account information." %}
 ```javascript
 {
     'balances': 
@@ -924,8 +946,8 @@ timestamp
         ]
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 **weight(IP/UID): 1**
 
@@ -942,3 +964,118 @@ timestamp
 | `asset`  | string | `USDT`  | Name of the asset               |
 | `free`   | float  | 1000.30 | Amount available for use        |
 | `locked` | float  | 400     | Amount locked (for open orders) |
+
+
+
+### **Transfer**
+
+<mark style="color:green;">`POST`</mark> `https://openapi.xxx.xx/sapi/v1/asset/transfer`
+
+#### Headers
+
+| Name        | Type   | Description  |
+| ----------- | ------ | ------------ |
+| X-CH-SIGN   | String | Sign         |
+| X-CH-APIKEY | String | Your API-key |
+| X-CH-TS     | String | timestamp    |
+
+#### Request Body
+
+| Name                                          | Type   | Description                                                                                                 |
+| --------------------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------- |
+| coinSymbol<mark style="color:red;">\*</mark>  | String | coin                                                                                                        |
+| amount<mark style="color:red;">\*</mark>      | float  | Quantity                                                                                                    |
+| fromAccount<mark style="color:red;">\*</mark> | String | <p>From Account <br><strong>EXCHANGE</strong>: Spot Account<br><strong>FUTURE</strong>: Futures Account</p> |
+| toAccount<mark style="color:red;">\*</mark>   | String | <p>To Account <br><strong>EXCHANGE</strong>: Spot Account<br><strong>FUTURE</strong>: Futures Account</p>   |
+
+{% tabs %}
+{% tab title="200: OK  划转成功" %}
+```javascript
+{
+    "code": "0",
+    "msg": "SUCCESS",
+    "data": {
+        "transferId": "1a9ec387-8b81-4789-a98e-bc6a606c8736"
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+**权重(IP/UID): 5**
+
+#### Response:
+
+| transferId | String | <pre><code>1a9ec387-8b81-4789-a98e-bc6a606c8736
+</code></pre> | Transfer ID |   |
+| ---------- | ------ | ------------------------------------------------------------- | ----------- | - |
+
+
+
+### The transfer record query&#x20;
+
+<mark style="color:green;">`POST`</mark> `https://openapi.xxx.xx/sapi/v1/asset/transferQuery`
+
+#### Headers
+
+| Name        | Type   | Description  |
+| ----------- | ------ | ------------ |
+| X-CH-SIGN   | String | Sign         |
+| X-CH-APIKEY | String | Your API-key |
+| X-CH-TS     | String | timestamp    |
+
+#### Request Body
+
+ps:\
+When transferId is not provided, fromAccount/toAccount are required.\
+If startTime and endTime are not provided, the default is to return data from the last 7 days.\
+Only data from the last 6 months is supported for querying.
+
+| Name        | Type    | Description                                                                                             |
+| ----------- | ------- | ------------------------------------------------------------------------------------------------------- |
+| transferId  | String  | Transfer ID                                                                                             |
+| coinSymbol  | String  | coinSymbol                                                                                              |
+| fromAccount | String  | <p>From Account <strong>EXCHANGE</strong>: Spot Account<br><strong>FUTURE</strong>: Futures Account</p> |
+| toAccount   | String  | <p>To Account <strong>EXCHANGE</strong>: Spot Account<br><strong>FUTURE</strong>: Futures Account</p>   |
+| startTime   | long    | Start Time, 13-digit Timestamp                                                                          |
+| endTime     | long    | End Time, 13-digit Timestamp                                                                            |
+| page        | Integer | If page is not provided, the default is 1.                                                              |
+| limit       | Integer | If limit is not provided, the default is 20, with a maximum of 100.                                     |
+
+{% tabs %}
+{% tab title="200: OK  划转成功" %}
+```javascript
+{
+    "code": "0",
+    "msg": "SUCCESS",
+    "data": {
+        "list": [
+            {
+                "transferId": "1a9ec387-8b81-4789-a98e-bc6a606c8736",
+                "fromAccount": "EXCHANGE",
+                "toAccount": "FUTURE",
+                "coinSymbol": "USDT",
+                "createTime": 1742369830000,
+                "amount": "1",
+                "status": "SUCCESS"
+            }
+        ]
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+**权重(IP/UID): 5**
+
+#### Response:
+
+| transferId  | String | <pre><code>1a9ec387-8b81-4789-a98e-bc6a606c8736
+</code></pre> | Transfer ID                                                                    |   |
+| ----------- | ------ | ------------------------------------------------------------- | ------------------------------------------------------------------------------ | - |
+| fromAccount | String | EXCHANGE                                                      | From Account                                                                   |   |
+| toAccount   | String | FUTURE                                                        | To Account                                                                     |   |
+| coinSymbol  | String | USDT                                                          | coinSymbol                                                                     |   |
+| createTime  | long   | 1742300000000                                                 | Creation Timestamp                                                             |   |
+| amount      | String | 1                                                             | Quantity                                                                       |   |
+| status      | String | SUCCESS                                                       | <p>Status<br>SUCCESS = Success<br>PENDING = In Progress<br>FAILED = Failed</p> |   |
